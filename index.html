@@ -2,9 +2,9 @@
 <html lang="km" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sophat CHY - Digital Content Creator, Technology Trainer, and Barcamp Cambodia Lead Organizer.">
-    <title>Sophat CHY | Connect & Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sophat CHY - Digital Content Creator, Barcamp Community, Tech Influencer, and Digital Literacy Trainer.">
+    <title>Sophat CHY | OS Profile</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,10 +12,10 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Fonts: Kantumruy Pro (Khmer) & Poppins (English) -->
+    <!-- Fonts: Kantumruy Pro & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Config -->
     <script>
@@ -24,31 +24,42 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        khmer: ['Kantumruy Pro', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        khmer: ['"Kantumruy Pro"', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            light: '#3b82f6', // Blue-500
-                            DEFAULT: '#2563eb', // Blue-600
-                            dark: '#1d4ed8', // Blue-700
+                        ios: {
+                            blue: '#007AFF',
+                            green: '#34C759',
+                            indigo: '#5856D6',
+                            orange: '#FF9500',
+                            red: '#FF3B30',
+                            gray: '#8E8E93',
                         },
                         aba: '#005F7F',
-                        abaCyan: '#00a3da',
-                        khqr: '#E1232E',
+                    },
+                    borderRadius: {
+                        'ios': '32px', 
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scale-in': 'scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                        'blob': 'blob 10s infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
                 }
@@ -57,572 +68,434 @@
     </script>
 
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* Professional Dot Pattern Background */
-        .bg-dot-pattern {
-            background-color: #f8fafc;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 32px 32px;
+        /* Mobile Scrollbar Hide */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        body {
+            background-color: #f2f2f7;
+            overflow-x: hidden;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Hover Effects */
-        .hover-lift {
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            border-color: rgba(37, 99, 235, 0.2);
-        }
-
-        /* Treat Card Active State */
-        .treat-card.active {
-            border-color: currentColor;
-            transform: scale(1.02);
-            box-shadow: 0 0 0 2px currentColor; 
-        }
-
-        /* Animations */
-        .animate-delay-100 { animation-delay: 100ms; }
-        .animate-delay-200 { animation-delay: 200ms; }
-        .animate-delay-300 { animation-delay: 300ms; }
-
-        /* Floating Emojis */
-        .floating-emoji {
+        /* Background Mesh Gradient 
+           Creates the colorful spots behind the glass
+        */
+        .mesh-background {
             position: fixed;
-            pointer-events: none;
-            animation: floatUp 2.5s ease-out forwards;
-            z-index: 50;
-            font-size: 2rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            background: #f2f2f7;
+            overflow: hidden;
+        }
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: blob 15s infinite alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #E0E7FF; animation-delay: 0s; }
+        .blob-2 { top: 40%; right: -20%; width: 400px; height: 400px; background: #FAE8FF; animation-delay: 2s; }
+        .blob-3 { bottom: -10%; left: 20%; width: 600px; height: 600px; background: #F0F9FF; animation-delay: 4s; }
+
+        /* iOS 26 "Spatial Glass" 
+           High blur, high saturation, white tint
+        */
+        .glass-ios {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(30px) saturate(140%);
+            -webkit-backdrop-filter: blur(30px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.03), /* Ambient shadow */
+                inset 0 0 20px rgba(255, 255, 255, 0.5); /* Inner glow */
+            border-radius: 32px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .glass-ios:active {
+            background: rgba(255, 255, 255, 0.75);
+            transform: scale(0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1.2) rotate(360deg); opacity: 0; }
+        /* App Icon - Glossy Finish */
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            /* Deep shadow for depth */
+            box-shadow: 0 8px 16px -4px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        /* Top shine */
+        .app-icon::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+        }
+        .app-icon:hover { transform: translateY(-4px) scale(1.05); }
+        .app-icon:active { transform: scale(0.95); filter: brightness(0.95); }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 100px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Toast */
-        #toast {
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(20px) translateX(-50%);
-            transition: all 0.3s ease;
-        }
-        #toast.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0) translateX(-50%);
-        }
+        /* Text selection */
+        ::selection { background: rgba(0, 122, 255, 0.3); color: black; }
     </style>
 </head>
-<body class="bg-dot-pattern text-slate-800 font-sans min-h-screen relative overflow-x-hidden selection:bg-brand-light selection:text-white transition-colors duration-500">
+<body class="text-slate-800 pb-32">
 
-    <!-- Subtle Gradient Overlay -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white/80"></div>
-        <div class="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-blue-50/80 to-transparent"></div>
+    <!-- Live Mesh Background -->
+    <div class="mesh-background">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
     </div>
 
-    <!-- Floating Emoji Container -->
-    <div id="emoji-container"></div>
-
-    <!-- Main Wrapper -->
-    <div class="relative z-10 max-w-2xl mx-auto px-4 py-12 flex flex-col items-center">
-
-        <!-- Share Button (Top Right) -->
-        <button onclick="sharePage()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-500 hover:text-brand hover:bg-white transition-all duration-300 shadow-sm" title="Share Profile">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
-
-        <!-- Profile Header -->
-        <header class="text-center w-full mb-8 animate-fade-in">
+    <!-- Dynamic Island Nav -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in w-auto max-w-[90%]">
+        <div class="dynamic-island h-[48px] px-1.5 flex items-center gap-3 pr-4">
+            <!-- Avatar -->
+            <div class="w-[40px] h-[40px] rounded-full overflow-hidden border border-white/20">
+                <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" class="w-full h-full object-cover">
+            </div>
             
-            <!-- Profile Image Container -->
-            <div class="relative w-40 h-40 mx-auto mb-6 group cursor-pointer">
-                <!-- Glowing Ring -->
-                <div class="absolute -inset-1 bg-gradient-to-tr from-brand to-purple-500 rounded-full opacity-75 blur group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-                
-                <!-- Actual Image -->
-                <div class="relative w-full h-full rounded-full border-4 border-white shadow-xl overflow-hidden bg-slate-100">
-                    <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" 
-                         class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" 
-                         alt="Sophat CHY">
-                </div>
-                
-                <!-- Status Dot -->
-                <div class="absolute bottom-2 right-2 w-7 h-7 bg-green-500 rounded-full border-4 border-white shadow-sm" title="Available for work"></div>
+            <span class="text-white/90 text-sm font-medium tracking-wide">Sophat</span>
+
+            <div class="h-4 w-[1px] bg-white/20 mx-1"></div>
+
+            <button onclick="sharePage()" class="text-white/70 hover:text-white transition-colors">
+                 <i class="fa-solid fa-arrow-up-from-bracket text-sm"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-[420px] mx-auto px-5 pt-28 flex flex-col gap-5">
+
+        <!-- 1. Transparent Hero Card -->
+        <section class="glass-ios p-6 flex flex-col items-center text-center animate-scale-in" style="animation-delay: 0.1s;">
+            <!-- Profile Image -->
+            <div class="w-28 h-28 rounded-[28px] overflow-hidden shadow-xl shadow-blue-900/5 mb-4 relative group border-[3px] border-white/50">
+                <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" 
+                     class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
             </div>
 
-            <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand mb-2 font-khmer tracking-tight pb-2 drop-shadow-sm">Sophat CHY</h1>
-            <p class="text-slate-500 text-xl md:text-2xl mb-6 font-khmer font-bold tracking-wide">ជី សុផាត</p>
+            <h1 class="text-3xl font-extrabold text-slate-800 mb-1 tracking-tight font-khmer drop-shadow-sm">Sophat CHY</h1>
+            <p class="text-slate-500 font-medium text-sm mb-4 font-khmer">ជី សុផាត</p>
             
-            <!-- Tags/Badges -->
-            <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <span class="px-4 py-1.5 bg-white/80 text-blue-700 rounded-full text-xs font-bold border border-blue-100 shadow-sm uppercase tracking-wide">Content Creator</span>
-                <span class="px-4 py-1.5 bg-white/80 text-purple-700 rounded-full text-xs font-bold border border-purple-100 shadow-sm uppercase tracking-wide">Tech Trainer</span>
-                <span class="px-4 py-1.5 bg-white/80 text-orange-700 rounded-full text-xs font-bold border border-orange-100 shadow-sm uppercase tracking-wide">Community Leader</span>
+            <!-- Updated Info Badges -->
+            <div class="flex flex-wrap justify-center gap-2 mb-4">
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Content Creator & Barcamp Community</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Tech Influencer</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Literacy, Safety & Tourism</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Google Local Guides</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Video 360 Street View</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">GMB</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Literacy Trainer</span>
+                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Motorcycle Vlog Traveler</span>
             </div>
 
-            <!-- About Me Section -->
-            <div class="glass-panel p-6 rounded-2xl text-left shadow-sm border-l-4 border-l-brand relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-brand">
-                    <i class="fa-solid fa-quote-right"></i>
-                </div>
-                <h3 class="font-bold text-slate-800 mb-3 flex items-center gap-2 text-lg">
-                    <i class="fa-solid fa-user-circle text-brand"></i> About Me
-                </h3>
-                <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4">
-                    I am a <strong>Digital Content Creator</strong> and <strong>Tech Community Leader</strong> with over a decade of experience shaping Cambodia's digital landscape. My passion lies in bridging the digital divide—empowering individuals with the skills to navigate the internet safely and creatively.
-                </p>
-                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-                    As a dedicated advocate for <strong>Digital Literacy</strong>, I produce educational content that simplifies complex tech topics for the general public. Whether organizing major tech conferences or sharing travel stories 📸, my goal remains the same: to inspire, educate, and connect the community.
-                </p>
-            </div>
-        </header>
+            <p class="text-slate-600 text-sm leading-relaxed px-2 font-medium opacity-80">
+                Empowering Cambodia through tech, education, and exploration.
+            </p>
+        </section>
 
-        <!-- Social Links Grid -->
-        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 mb-12 animate-fade-in animate-delay-100">
-            
-            <!-- YouTube -->
-            <a href="https://youtube.com/sophatchy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center text-xl group-hover:bg-red-600 group-hover:text-white transition-colors border border-red-100">
-                    <i class="fa-brands fa-youtube"></i>
-                </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">YouTube</h3>
-                    <p class="text-xs text-slate-500">Tech & Travel Vlogs</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
-            </a>
-
+        <!-- 2. App Grid (Icons) -->
+        <section class="grid grid-cols-4 gap-y-5 gap-x-2 animate-scale-in" style="animation-delay: 0.2s;">
             <!-- Facebook -->
-            <a href="https://fb.com/SophatCHY" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors border border-blue-100">
+            <a href="https://fb.com/SophatCHY" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-[#1877F2]">
                     <i class="fa-brands fa-facebook-f"></i>
                 </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">Facebook</h3>
-                    <p class="text-xs text-slate-500">Daily Updates</p>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Facebook</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/sophatchy" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-[#FF0000]">
+                    <i class="fa-brands fa-youtube text-[20px]"></i>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">YouTube</span>
             </a>
 
             <!-- Telegram -->
-            <a href="https://t.me/SophatCHY" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-500 flex items-center justify-center text-xl group-hover:bg-sky-500 group-hover:text-white transition-colors border border-sky-100">
-                    <i class="fa-brands fa-telegram"></i>
+            <a href="https://t.me/SophatCHY" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-[#229ED9]">
+                    <i class="fa-brands fa-telegram text-[24px]"></i>
                 </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">Telegram</h3>
-                    <p class="text-xs text-slate-500">Contact Me</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Telegram</span>
             </a>
 
             <!-- Instagram -->
-            <a href="https://www.instagram.com/sophatchy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center text-xl group-hover:bg-pink-600 group-hover:text-white transition-colors border border-pink-100">
-                    <i class="fa-brands fa-instagram"></i>
+            <a href="https://www.instagram.com/sophatchy" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-gradient-to-tr from-[#FD1D1D] to-[#833AB4]">
+                    <i class="fa-brands fa-instagram text-[24px]"></i>
                 </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">Instagram</h3>
-                    <p class="text-xs text-slate-500">Photography</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Instagram</span>
             </a>
 
-             <!-- Twitter / X -->
-             <a href="https://x.com/SophatChy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-xl group-hover:bg-black group-hover:text-white transition-colors border border-slate-200">
-                    <i class="fa-brands fa-x-twitter"></i>
+            <!-- X -->
+            <a href="https://x.com/SophatChy" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-slate-900">
+                    <i class="fa-brands fa-x-twitter text-[22px]"></i>
                 </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">X (Twitter)</h3>
-                    <p class="text-xs text-slate-500">Thoughts & Threads</p>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Twitter</span>
             </a>
-            
+
             <!-- Email -->
-             <a href="mailto:sophatchy@gmail.com" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group border-l-4 border-l-brand">
-                <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors border border-emerald-100">
-                    <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:sophatchy@gmail.com" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-slate-400">
+                    <i class="fa-solid fa-envelope text-[22px]"></i>
                 </div>
-                <div class="flex-grow">
-                    <h3 class="font-bold text-sm text-slate-800">Email Me</h3>
-                    <p class="text-xs text-slate-500">Work Inquiries</p>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Mail</span>
+            </a>
+
+             <!-- LinkedIn -->
+             <a href="https://www.linkedin.com/in/sophatchy/" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-[#0077B5]">
+                    <i class="fa-brands fa-linkedin-in text-[22px]"></i>
                 </div>
-                <i class="fa-solid fa-arrow-right text-xs text-slate-300 group-hover:text-slate-500"></i>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">LinkedIn</span>
+            </a>
+
+            <!-- Website -->
+            <a href="https://sophatchy.com/" target="_blank" class="flex flex-col items-center gap-1.5 group">
+                <div class="app-icon bg-teal-500">
+                    <i class="fa-solid fa-globe text-[22px]"></i>
+                </div>
+                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Web</span>
             </a>
         </section>
 
-        <!-- Featured Projects / "Work" -->
-        <section class="w-full mb-12 animate-fade-in animate-delay-200">
-            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <span class="w-8 h-px bg-slate-300"></span> Projects & Services <span class="w-full h-px bg-slate-300"></span>
-            </h2>
+        <!-- 3. Glass Widget Stacks -->
+        <section class="flex flex-col gap-4 animate-scale-in" style="animation-delay: 0.3s;">
             
-            <div class="space-y-3">
-                <!-- Barcamp -->
-                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0 border border-orange-200">
-                        <i class="fa-solid fa-microphone-lines"></i>
+            <!-- Featured Project Widget -->
+            <a href="https://www.techinasia.com/barcamp-phnom-penh-unconference-sees-3000-cambodians-talk-tech" target="_blank" class="glass-ios p-5 flex items-center gap-4 group hover:bg-white/60">
+                <div class="w-12 h-12 rounded-[14px] bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-[10px] font-bold text-orange-600 bg-orange-50/80 px-2 py-0.5 rounded-full uppercase tracking-wide backdrop-blur-sm">Featured</span>
+                        <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-slate-800">Barcamp Cambodia</h3>
-                        <p class="text-sm text-slate-600 leading-snug">Lead Organizer for Cambodia's largest tech unconference series, connecting thousands of students and professionals across the country.</p>
-                    </div>
+                    <h3 class="font-bold text-slate-800 leading-tight text-sm">Barcamp Cambodia</h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-1">Connecting 3,000+ tech enthusiasts.</p>
+                </div>
+            </a>
+
+            <!-- Media List (Transparent) -->
+            <div class="glass-ios flex flex-col divide-y divide-slate-200/50">
+                <div class="px-5 py-3 bg-white/20 backdrop-blur-md">
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Media Mentions</h3>
                 </div>
 
-                <!-- Digital Literacy -->
-                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0 border border-blue-200">
-                        <i class="fa-solid fa-shield-halved"></i>
+                <!-- RFI Khmer (New) -->
+                <a href="https://www.youtube.com/watch?v=tTnIIzOIrJU&t=396s" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-solid fa-radio text-xs"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-slate-800">Digital Safety Awareness</h3>
-                        <p class="text-sm text-slate-600 leading-snug">Producing educational content on cybersecurity, reporting scams, and promoting digital hygiene practices.</p>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">RFI Khmer</h4>
+                        <p class="text-[10px] text-slate-500 truncate">មានទីតាំងមិនប្រក្រតីជាង៥០០កន្លែងដៅលើផែនទី Google</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- Consulting -->
-                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0 border border-purple-200">
-                        <i class="fa-solid fa-chalkboard-user"></i>
+                <!-- Phnom Penh Post (New) -->
+                <a href="https://www.youtube.com/watch?v=TCYGbp3I2a0" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-solid fa-newspaper text-xs"></i>
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-slate-800">Tech Training & Consulting</h3>
-                        <p class="text-sm text-slate-600 leading-snug">Available for workshops, speaking engagements, and ICT consulting for organizations (Kawsang, Technovation).</p>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">Phnom Penh Post</h4>
+                        <p class="text-[10px] text-slate-500 truncate">ហានិភ័យដែលអាចកើតឡើងតាមរយៈការស្វែងរកទីតាំងលើរូបថត</p>
                     </div>
-                </div>
-            </div>
-        </section>
+                </a>
 
-        <!-- Media & Mentions Section (Updated) -->
-        <section class="w-full mb-12 animate-fade-in animate-delay-200">
-            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <span class="w-8 h-px bg-slate-300"></span> Media & Mentions <span class="w-full h-px bg-slate-300"></span>
-            </h2>
-            
-            <div class="grid grid-cols-1 gap-3">
-                
-                <!-- Cambodia ICT Camp (Bio) -->
-                <a href="https://cambodiaict.net/en/facilitators/chy-sophart/" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-blue-600 w-8 text-center"><i class="fa-solid fa-user-tag"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">Cambodia ICT Camp</h4>
-                            <p class="text-xs text-slate-500">Official Facilitator Profile: Digital Security & Content Creation.</p>
-                        </div>
+                <!-- Cambodianess -->
+                <a href="https://cambodianess.com/article/manipulated-google-maps-entries-raise-sovereignty-fears-in-cambodia" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-solid fa-map-location-dot text-xs"></i>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">Cambodianess</h4>
+                        <p class="text-[10px] text-slate-500 truncate">Manipulated Google Maps & Sovereignty</p>
+                    </div>
                 </a>
 
                 <!-- CamboJA News -->
-                <a href="https://cambojanews.com/cambodians-digital-security-a-growing-concern-experts-say/" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-slate-800 w-8 text-center"><i class="fa-regular fa-newspaper"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">CamboJA News</h4>
-                            <p class="text-xs text-slate-500">Interview on Digital Security concerns in Cambodia.</p>
-                        </div>
+                <a href="https://cambojanews.com/cambodia-sites-targeted-in-google-maps-edits-digital-expert-report-says/" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-regular fa-newspaper text-xs"></i>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">CamboJA News</h4>
+                        <p class="text-[10px] text-slate-500 truncate">Digital Expert Report on Map Edits</p>
+                    </div>
                 </a>
 
-                <!-- The Thomith Show -->
-                <a href="https://www.iden.media/thethomithshowseason4" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-red-500 w-8 text-center"><i class="fa-solid fa-podcast"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">The Thomith Show</h4>
-                            <p class="text-xs text-slate-500">Guest speaker on content creation & entrepreneurship.</p>
-                        </div>
+                <!-- Kiripost (Maps) -->
+                <a href="https://www.mosesngeth.com/posts/cambodias-digital-sovereignty-under-attack-as-thai-accounts-exploit-google-maps" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-solid fa-shield-halved text-xs"></i>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">Kiripost</h4>
+                        <p class="text-[10px] text-slate-500 truncate">Digital Sovereignty Under Attack</p>
+                    </div>
                 </a>
 
-                <!-- TechInAsia -->
-                <a href="https://www.techinasia.com/barcamp-phnom-penh-unconference-sees-3000-cambodians-talk-tech" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-orange-500 w-8 text-center"><i class="fa-solid fa-bullhorn"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">TechInAsia</h4>
-                            <p class="text-xs text-slate-500">Barcamp Phnom Penh sees 3,000+ attendees.</p>
-                        </div>
+                <!-- Kiripost (Facebook) -->
+                <a href="https://www.mosesngeth.com/posts/experts-caution-facebook-users-to-secure-accounts-amid-rising-disabling-cases" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
+                    <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 shadow-sm">
+                        <i class="fa-brands fa-facebook-f text-xs"></i>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
-                </a>
-
-                <!-- Google Local Guides -->
-                <a href="https://www.localguidesconnect.com/t/hi-everyone-i-m-sophat-chy-a-remote-content-creator-with-a-passion-for-exploration/m-p/481552" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-green-500 w-8 text-center"><i class="fa-solid fa-map-location-dot"></i></div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">Google Local Guides</h4>
-                            <p class="text-xs text-slate-500">Feature on mapping Cambodia & exploration.</p>
-                        </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-slate-800">Kiripost</h4>
+                        <p class="text-[10px] text-slate-500 truncate">Facebook Account Security Advice</p>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
                 </a>
-
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="w-full flex items-center gap-4 mb-8 opacity-60 animate-fade-in animate-delay-200">
-            <div class="h-px bg-slate-300 flex-grow"></div>
-            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Support My Content</span>
-            <div class="h-px bg-slate-300 flex-grow"></div>
-        </div>
-
-        <!-- Interactive Treat Section -->
-        <section class="w-full animate-fade-in animate-delay-300">
-            <div class="text-center mb-6">
-                <h2 class="text-2xl font-bold font-khmer text-slate-900">ប៉ាវកាហ្វេខ្ញុំមួយកែវបានអត់? ☕</h2>
-                <p class="text-slate-500 text-sm mt-1">Select a treat below to support my work!</p>
+        <!-- 4. Support Buttons -->
+        <section class="animate-scale-in" style="animation-delay: 0.4s;">
+            <div class="flex items-center justify-between mb-3 px-1">
+                <h3 class="text-xs font-bold text-slate-800/60 uppercase tracking-wide">Support</h3>
+                <i class="fa-solid fa-lock text-[10px] text-slate-400"></i>
             </div>
 
-            <!-- Treat Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-                <!-- Coffee -->
-                <button onclick="selectItem('coffee')" id="btn-coffee" class="treat-card bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center gap-2 hover:shadow-md transition-all group text-slate-700">
-                    <span class="text-3xl group-hover:scale-110 transition-transform">☕</span>
-                    <span class="font-bold text-xs">Coffee</span>
-                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">$1.50</span>
-                </button>
-                <!-- Iced Tea -->
-                <button onclick="selectItem('ice')" id="btn-ice" class="treat-card bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center gap-2 hover:shadow-md transition-all group text-slate-700">
-                    <span class="text-3xl group-hover:scale-110 transition-transform">🥤</span>
-                    <span class="font-bold text-xs">Iced Latte</span>
-                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">$2.50</span>
-                </button>
-                <!-- Beer -->
-                <button onclick="selectItem('beer')" id="btn-beer" class="treat-card bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center gap-2 hover:shadow-md transition-all group text-slate-700">
-                    <span class="text-3xl group-hover:scale-110 transition-transform">🍺</span>
-                    <span class="font-bold text-xs">Cold Beer</span>
-                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">$3.00</span>
-                </button>
-                 <!-- Pizza -->
-                 <button onclick="selectItem('meal')" id="btn-meal" class="treat-card bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center gap-2 hover:shadow-md transition-all group text-slate-700">
-                    <span class="text-3xl group-hover:scale-110 transition-transform">🍕</span>
-                    <span class="font-bold text-xs">Nice Meal</span>
-                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">$8.00</span>
-                </button>
-            </div>
-
-            <!-- Payment Panel (Hidden by default) -->
-            <div id="payment-panel" class="hidden transition-all duration-500 ease-in-out">
-                <div class="bg-gradient-to-br from-[#003D5B] to-[#005F7F] p-1 rounded-2xl shadow-2xl transform transition-all hover:scale-[1.01]">
-                    <div class="bg-white rounded-[14px] p-6 overflow-hidden relative">
-                        
-                        <!-- Header -->
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center gap-2">
-                                <div class="font-black text-2xl text-aba tracking-tighter">ABA</div>
-                                <div class="h-6 w-px bg-slate-300"></div>
-                                <div class="font-black text-2xl text-khqr tracking-tighter">KHQR</div>
-                            </div>
-                            <div class="bg-slate-100 text-slate-500 text-[10px] font-bold px-2 py-1 rounded">SCAN TO PAY</div>
-                        </div>
-
-                        <!-- Dynamic Selection Info -->
-                        <div class="text-center mb-6">
-                            <p class="text-slate-400 text-xs mb-1">You are treating Sophat to</p>
-                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-lg border border-slate-100">
-                                <span id="pay-icon" class="text-xl">☕</span>
-                                <span id="pay-name" class="font-bold text-slate-800 text-sm">Coffee</span>
-                                <span class="text-slate-300">|</span>
-                                <span id="pay-price" class="font-bold text-brand text-sm">$1.50</span>
-                            </div>
-                        </div>
-
-                        <!-- QR Code Area -->
-                        <div class="w-full aspect-square max-w-[240px] mx-auto bg-white rounded-xl border-2 border-slate-100 p-2 mb-6 relative group cursor-pointer shadow-inner">
-                            <!-- Placeholder QR - Replace src with actual KHQR image if available -->
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://pay.ababank.com/oRF8/1kbk3d46&color=000000" 
-                                 alt="ABA KHQR" 
-                                 class="w-full h-full object-contain rounded-lg opacity-90 group-hover:opacity-100 transition-opacity">
-                            
-                            <!-- Overlay Hint -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none">
-                                <span class="bg-white/90 text-[10px] font-bold px-2 py-1 rounded shadow-sm text-slate-600">Scan Me</span>
-                            </div>
-                        </div>
-
-                        <!-- Account Details -->
-                        <div class="text-center">
-                            <h3 class="font-bold text-slate-900 text-lg">CHY SOPHAT</h3>
-                            
-                            <!-- Copy Account Number -->
-                            <button onclick="copyToClipboard('000111343')" class="mt-2 flex items-center justify-center gap-2 w-full py-2 rounded-lg hover:bg-slate-50 transition-colors group">
-                                <span class="font-mono text-slate-500 font-bold tracking-widest text-lg group-hover:text-aba transition-colors">000 111 343</span>
-                                <i class="fa-regular fa-copy text-slate-300 group-hover:text-aba"></i>
-                            </button>
-
-                            <!-- Deep Link Button -->
-                            <a href="https://pay.ababank.com/oRF8/1kbk3d46" class="mt-4 w-full bg-aba hover:bg-abaCyan text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-900/10 transition-all active:scale-95 flex items-center justify-center gap-2 text-sm">
-                                <i class="fa-solid fa-mobile-screen"></i>
-                                Open ABA App
-                            </a>
-                        </div>
-
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="selectItem('coffee')" class="glass-ios p-4 flex flex-col items-center justify-center gap-2 hover:bg-amber-50/50 border border-white/40 hover:border-amber-200/50 transition-all group">
+                    <span class="text-3xl group-hover:scale-110 transition-transform filter drop-shadow-sm">☕</span>
+                    <div class="text-center">
+                        <span class="block text-xs font-bold text-slate-800">Buy Coffee</span>
+                        <span class="block text-[10px] text-slate-500 font-mono">$1.50</span>
                     </div>
-                </div>
+                </button>
+
+                <button onclick="selectItem('meal')" class="glass-ios p-4 flex flex-col items-center justify-center gap-2 hover:bg-orange-50/50 border border-white/40 hover:border-orange-200/50 transition-all group">
+                    <span class="text-3xl group-hover:scale-110 transition-transform filter drop-shadow-sm">🍕</span>
+                    <div class="text-center">
+                        <span class="block text-xs font-bold text-slate-800">Buy Meal</span>
+                        <span class="block text-[10px] text-slate-500 font-mono">$8.00</span>
+                    </div>
+                </button>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="mt-16 text-center text-xs text-slate-400 font-medium">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sophat CHY. All rights reserved.</p>
-            <div class="mt-2 flex justify-center gap-4 opacity-50">
-                <a href="#" class="hover:text-slate-600">Privacy</a>
-                <span>•</span>
-                <a href="#" class="hover:text-slate-600">Contact</a>
-            </div>
+        <footer class="text-center mt-8">
+            <p class="text-[10px] text-slate-400 font-medium tracking-wide opacity-70">DESIGNED IN PHNOM PENH</p>
         </footer>
 
+    </main>
+
+    <!-- Glass Payment Sheet -->
+    <div id="payment-overlay" class="fixed inset-0 bg-black/10 backdrop-blur-[4px] z-[60] hidden opacity-0 transition-opacity duration-300" onclick="closePayment()"></div>
+
+    <div id="payment-sheet" class="fixed bottom-4 left-4 right-4 z-[70] translate-y-[120%] transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1)">
+        <div class="glass-ios p-6 relative bg-white/80 backdrop-blur-2xl shadow-2xl border-white/60">
+            
+            <!-- Handle -->
+            <div class="w-10 h-1 bg-slate-300/80 rounded-full mx-auto mb-6"></div>
+
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-tr from-aba to-abaCyan rounded-2xl flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg shadow-aba/20 text-white">
+                    <span id="sheet-icon">☕</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-slate-800">Send <span id="sheet-price">$1.50</span></h2>
+                <p class="text-xs text-slate-500 mb-6">via ABA KHQR</p>
+
+                <div class="bg-white/50 p-4 rounded-[24px] mb-6 border border-white shadow-inner">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://pay.ababank.com/oRF8/1kbk3d46&color=003D5B" class="w-40 h-40 mx-auto rounded-xl opacity-90 mix-blend-multiply">
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <a href="https://pay.ababank.com/oRF8/1kbk3d46" class="w-full py-3.5 bg-aba text-white font-bold rounded-2xl shadow-lg shadow-aba/20 active:scale-95 transition-transform flex items-center justify-center gap-2 text-sm">
+                        Open ABA App
+                    </a>
+                    <button onclick="copyToClipboard('000111343')" class="w-full py-3.5 bg-white/50 border border-white text-slate-600 font-bold rounded-2xl active:scale-95 transition-transform text-sm hover:bg-white">
+                        Copy: 000 111 343
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 left-1/2 z-50 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 min-w-[200px] justify-center">
-        <i class="fa-solid fa-circle-check text-green-400"></i>
-        <span class="font-bold text-sm">Copied to clipboard!</span>
-    </div>
-
-    <!-- Scripts -->
     <script>
-        // Data for items
         const items = {
-            coffee: { name: 'Hot Coffee', price: '$1.50', icon: '☕', color: 'text-amber-800' },
-            ice: { name: 'Iced Latte', price: '$2.50', icon: '🥤', color: 'text-blue-600' },
-            beer: { name: 'Cold Beer', price: '$3.00', icon: '🍺', color: 'text-yellow-600' },
-            meal: { name: 'Nice Meal', price: '$8.00', icon: '🍕', color: 'text-orange-600' }
+            coffee: { name: 'Hot Coffee', price: '$1.50', icon: '☕' },
+            meal: { name: 'Nice Meal', price: '$8.00', icon: '🍕' }
         };
 
-        // Audio Context Setup (for sound effects)
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const audioCtx = new AudioContext();
-
-        function playSound(type) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            
-            if (type === 'click') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1);
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.1);
-            }
-            else if (type === 'success') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(500, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.1);
-                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
-                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.3);
-            }
-        }
-
-        // Handle Item Selection
         function selectItem(key) {
-            playSound('click');
+            document.getElementById('sheet-icon').innerText = items[key].icon;
+            document.getElementById('sheet-price').innerText = items[key].price;
             
-            // UI Updates
-            document.querySelectorAll('.treat-card').forEach(el => {
-                el.classList.remove('active', 'ring-2', 'bg-slate-50');
-                el.classList.add('bg-white');
-            });
-
-            const btn = document.getElementById(`btn-${key}`);
-            btn.classList.add('active', 'ring-2', 'bg-slate-50');
-            btn.classList.remove('bg-white');
+            const overlay = document.getElementById('payment-overlay');
+            const sheet = document.getElementById('payment-sheet');
             
-            // Set Color based on item
-            let ringColor = 'ring-slate-300';
-            if(key === 'coffee') ringColor = 'text-amber-600';
-            if(key === 'ice') ringColor = 'text-blue-500';
-            if(key === 'beer') ringColor = 'text-yellow-500';
-            if(key === 'meal') ringColor = 'text-orange-500';
-            
-            btn.style.color = ''; // Reset inline style
-            btn.classList.add(items[key].color);
-
-            // Update Payment Panel
-            const panel = document.getElementById('payment-panel');
-            document.getElementById('pay-name').innerText = items[key].name;
-            document.getElementById('pay-price').innerText = items[key].price;
-            document.getElementById('pay-icon').innerText = items[key].icon;
-
-            // Show Panel
-            panel.classList.remove('hidden');
+            overlay.classList.remove('hidden');
             setTimeout(() => {
-                panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-
-            // Floating Emojis
-            triggerFloatingEmojis(items[key].icon);
+                overlay.classList.remove('opacity-0');
+                sheet.classList.remove('translate-y-[120%]');
+            }, 10);
         }
 
-        function triggerFloatingEmojis(emoji) {
-            const container = document.getElementById('emoji-container');
-            for(let i=0; i<6; i++) {
-                const el = document.createElement('div');
-                el.innerText = emoji;
-                el.className = 'floating-emoji';
-                el.style.left = Math.random() * 80 + 10 + '%'; // Keep somewhat central
-                el.style.bottom = '-50px';
-                el.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
-                el.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-                container.appendChild(el);
-                setTimeout(() => el.remove(), 3000);
-            }
+        function closePayment() {
+            const overlay = document.getElementById('payment-overlay');
+            const sheet = document.getElementById('payment-sheet');
+            
+            overlay.classList.add('opacity-0');
+            sheet.classList.add('translate-y-[120%]');
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                playSound('success');
-                triggerFloatingEmojis('📋');
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2000);
+                const btn = event.currentTarget;
+                const originalText = btn.innerText;
+                btn.innerText = "Copied!";
+                btn.classList.add('bg-green-500', 'text-white', 'border-transparent');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('bg-green-500', 'text-white', 'border-transparent');
+                }, 1500);
+            }).catch(err => {
+                console.error("Failed to copy:", err);
             });
         }
 
         function sharePage() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Sophat CHY - Profile',
-                    text: 'Check out Sophat CHY\'s profile & support his work!',
+                    title: 'Sophat CHY',
                     url: window.location.href,
+                }).catch(err => {
+                    console.log('Share canceled or failed:', err);
                 });
             } else {
-                copyToClipboard(window.location.href);
+                navigator.clipboard.writeText(window.location.href)
+                .then(() => alert('Link copied to clipboard!'))
+                .catch(err => console.error('Failed to copy link:', err));
             }
         }
     </script>
