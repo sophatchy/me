@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="km" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Sophat CHY - Digital Content Creator, Barcamp Community, Tech Influencer, and Digital Literacy Trainer.">
-    <title>Sophat CHY | OS Profile</title>
+    <meta name="description" content="Sophat CHY - Digital Content Creator, Tech Trainer, and Barcamp Cambodia Lead Organizer.">
+    <title>Sophat CHY | Portfolio</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,7 +24,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', '"Kantumruy Pro"', 'sans-serif'],
                         khmer: ['"Kantumruy Pro"', 'sans-serif'],
                     },
                     colors: {
@@ -35,32 +35,16 @@
                             orange: '#FF9500',
                             red: '#FF3B30',
                             gray: '#8E8E93',
+                            glass: 'rgba(255, 255, 255, 0.65)',
                         },
                         aba: '#005F7F',
                     },
                     borderRadius: {
                         'ios': '32px', 
+                        'card': '24px',
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'scale-in': 'scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
-                        'blob': 'blob 10s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        scaleIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.95)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.05)',
                     }
                 }
             }
@@ -76,380 +60,330 @@
             overflow-x: hidden;
         }
 
-        /* Background Mesh Gradient 
-           Creates the colorful spots behind the glass
-        */
+        /* Mesh Background */
         .mesh-background {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
             background: #f2f2f7;
-            overflow: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,0) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,0) 0, transparent 50%);
         }
         .mesh-blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.6;
-            animation: blob 15s infinite alternate;
+            animation: blob 20s infinite alternate;
         }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #E0E7FF; animation-delay: 0s; }
-        .blob-2 { top: 40%; right: -20%; width: 400px; height: 400px; background: #FAE8FF; animation-delay: 2s; }
-        .blob-3 { bottom: -10%; left: 20%; width: 600px; height: 600px; background: #F0F9FF; animation-delay: 4s; }
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #E0E7FF; }
+        .blob-2 { top: 40%; right: -20%; width: 400px; height: 400px; background: #FAE8FF; animation-delay: -5s; }
+        .blob-3 { bottom: -10%; left: 20%; width: 600px; height: 600px; background: #F0F9FF; animation-delay: -10s; }
 
-        /* iOS 26 "Spatial Glass" 
-           High blur, high saturation, white tint
-        */
-        .glass-ios {
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(30px) saturate(140%);
-            -webkit-backdrop-filter: blur(30px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 4px 30px rgba(0, 0, 0, 0.03), /* Ambient shadow */
-                inset 0 0 20px rgba(255, 255, 255, 0.5); /* Inner glow */
+        @keyframes blob {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* iOS Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 32px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .glass-ios:active {
-            background: rgba(255, 255, 255, 0.75);
-            transform: scale(0.98);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        .glass-card:active { transform: scale(0.99); }
+
+        /* Section Title */
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #8E8E93;
+            margin-bottom: 12px;
+            padding-left: 8px;
         }
 
-        /* App Icon - Glossy Finish */
-        .app-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 17px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 26px;
-            /* Deep shadow for depth */
-            box-shadow: 0 8px 16px -4px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.3);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        /* Top shine */
-        .app-icon::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
-        }
-        .app-icon:hover { transform: translateY(-4px) scale(1.05); }
-        .app-icon:active { transform: scale(0.95); filter: brightness(0.95); }
-
-        /* Dynamic Island */
-        .dynamic-island {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+        /* Bottom Dock */
+        .dock {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 100px;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
         }
-
-        /* Text selection */
-        ::selection { background: rgba(0, 122, 255, 0.3); color: black; }
     </style>
 </head>
 <body class="text-slate-800 pb-32">
 
-    <!-- Live Mesh Background -->
+    <!-- Background -->
     <div class="mesh-background">
         <div class="mesh-blob blob-1"></div>
         <div class="mesh-blob blob-2"></div>
         <div class="mesh-blob blob-3"></div>
     </div>
 
-    <!-- Dynamic Island Nav -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in w-auto max-w-[90%]">
-        <div class="dynamic-island h-[48px] px-1.5 flex items-center gap-3 pr-4">
-            <!-- Avatar -->
-            <div class="w-[40px] h-[40px] rounded-full overflow-hidden border border-white/20">
-                <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" class="w-full h-full object-cover">
-            </div>
-            
-            <span class="text-white/90 text-sm font-medium tracking-wide">Sophat</span>
+    <!-- Main Scroll Container -->
+    <main class="w-full max-w-[480px] mx-auto px-5 pt-12 flex flex-col gap-8">
 
-            <div class="h-4 w-[1px] bg-white/20 mx-1"></div>
-
-            <button onclick="sharePage()" class="text-white/70 hover:text-white transition-colors">
-                 <i class="fa-solid fa-arrow-up-from-bracket text-sm"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="w-full max-w-[420px] mx-auto px-5 pt-28 flex flex-col gap-5">
-
-        <!-- 1. Transparent Hero Card -->
-        <section class="glass-ios p-6 flex flex-col items-center text-center animate-scale-in" style="animation-delay: 0.1s;">
-            <!-- Profile Image -->
-            <div class="w-28 h-28 rounded-[28px] overflow-hidden shadow-xl shadow-blue-900/5 mb-4 relative group border-[3px] border-white/50">
+        <!-- 1. HOME: Hero Section -->
+        <section id="home" class="flex flex-col items-center text-center">
+            <div class="relative w-32 h-32 mb-6 group cursor-pointer">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-ios-blue to-ios-indigo opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
                 <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" 
-                     class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                     class="relative w-full h-full rounded-full object-cover border-4 border-white shadow-xl">
+                <div class="absolute bottom-1 right-1 bg-ios-green border-4 border-white w-7 h-7 rounded-full"></div>
             </div>
 
-            <h1 class="text-3xl font-extrabold text-slate-800 mb-1 tracking-tight font-khmer drop-shadow-sm">Sophat CHY</h1>
-            <p class="text-slate-500 font-medium text-sm mb-4 font-khmer">ជី សុផាត</p>
-            
-            <!-- Updated Info Badges -->
-            <div class="flex flex-wrap justify-center gap-2 mb-4">
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Content Creator & Barcamp Community</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Tech Influencer</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Literacy, Safety & Tourism</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Google Local Guides</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Video 360 Street View</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">GMB</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Digital Literacy Trainer</span>
-                <span class="px-3 py-1.5 bg-white/40 border border-white/60 rounded-xl text-[11px] font-bold text-slate-700 backdrop-blur-sm">Motorcycle Vlog Traveler</span>
-            </div>
-
-            <p class="text-slate-600 text-sm leading-relaxed px-2 font-medium opacity-80">
-                Empowering Cambodia through tech, education, and exploration.
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Sophat CHY</h1>
+            <p class="text-slate-500 font-medium text-sm mb-6 max-w-xs mx-auto">
+                Digital Content Creator • Tech Trainer • Barcamp Lead Organizer
             </p>
+
+            <div class="glass-card p-5 text-left w-full">
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Hello! I'm a digital content creator and technology community leader with over a decade of experience in Cambodia's ICT sector. I organize major tech events and create educational content on <strong class="text-ios-blue">digital literacy</strong> and <strong class="text-ios-blue">internet safety</strong>.
+                </p>
+                <div class="mt-4 flex gap-3 overflow-x-auto pb-1 no-scrollbar">
+                    <button onclick="scrollToSection('contact')" class="px-4 py-2 bg-slate-900 text-white rounded-full text-xs font-bold shrink-0">Work with Me</button>
+                    <button onclick="scrollToSection('projects')" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-full text-xs font-bold shrink-0">View Projects</button>
+                </div>
+            </div>
         </section>
 
-        <!-- 2. App Grid (Icons) -->
-        <section class="grid grid-cols-4 gap-y-5 gap-x-2 animate-scale-in" style="animation-delay: 0.2s;">
-            <!-- Facebook -->
-            <a href="https://fb.com/SophatCHY" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-[#1877F2]">
-                    <i class="fa-brands fa-facebook-f"></i>
+        <!-- 2. ABOUT: Biography & Career -->
+        <section id="about">
+            <h2 class="section-title">About Sophat</h2>
+            <div class="glass-card p-6 flex flex-col gap-6">
+                <!-- Bio -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Biography</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Originally from <strong class="text-slate-700">Banteay Meanchey</strong>, my passion for community and technology began in 2006. Since then, I have been deeply engaged in building Cambodia's tech ecosystem.
+                    </p>
                 </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Facebook</span>
-            </a>
 
-            <!-- YouTube -->
-            <a href="https://youtube.com/sophatchy" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-[#FF0000]">
-                    <i class="fa-brands fa-youtube text-[20px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">YouTube</span>
-            </a>
+                <!-- Timeline -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800">Experience</h3>
+                    
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-lg"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">Lead Organizer</h4>
+                            <p class="text-xs text-slate-500">Barcamp Cambodia • 10+ Years</p>
+                        </div>
+                    </div>
 
-            <!-- Telegram -->
-            <a href="https://t.me/SophatCHY" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-[#229ED9]">
-                    <i class="fa-brands fa-telegram text-[24px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Telegram</span>
-            </a>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0 text-lg"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">Senior ICT Trainer</h4>
+                            <p class="text-xs text-slate-500">Kawsang Social Enterprise</p>
+                        </div>
+                    </div>
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/sophatchy" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-gradient-to-tr from-[#FD1D1D] to-[#833AB4]">
-                    <i class="fa-brands fa-instagram text-[24px]"></i>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-lg"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">Digital Design Specialist</h4>
+                            <p class="text-xs text-slate-500">Development Innovations (Past)</p>
+                        </div>
+                    </div>
                 </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Instagram</span>
-            </a>
-
-            <!-- X -->
-            <a href="https://x.com/SophatChy" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-slate-900">
-                    <i class="fa-brands fa-x-twitter text-[22px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Twitter</span>
-            </a>
-
-            <!-- Email -->
-            <a href="mailto:sophatchy@gmail.com" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-slate-400">
-                    <i class="fa-solid fa-envelope text-[22px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Mail</span>
-            </a>
-
-             <!-- LinkedIn -->
-             <a href="https://www.linkedin.com/in/sophatchy/" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-[#0077B5]">
-                    <i class="fa-brands fa-linkedin-in text-[22px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">LinkedIn</span>
-            </a>
-
-            <!-- Website -->
-            <a href="https://sophatchy.com/" target="_blank" class="flex flex-col items-center gap-1.5 group">
-                <div class="app-icon bg-teal-500">
-                    <i class="fa-solid fa-globe text-[22px]"></i>
-                </div>
-                <span class="text-[10px] font-semibold text-slate-500/80 group-hover:text-ios-blue">Web</span>
-            </a>
+            </div>
         </section>
 
-        <!-- 3. Glass Widget Stacks -->
-        <section class="flex flex-col gap-4 animate-scale-in" style="animation-delay: 0.3s;">
-            
-            <!-- Featured Project Widget -->
-            <a href="https://www.techinasia.com/barcamp-phnom-penh-unconference-sees-3000-cambodians-talk-tech" target="_blank" class="glass-ios p-5 flex items-center gap-4 group hover:bg-white/60">
-                <div class="w-12 h-12 rounded-[14px] bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform shadow-sm">
-                    <i class="fa-solid fa-microphone-lines"></i>
-                </div>
-                <div class="flex-1">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="text-[10px] font-bold text-orange-600 bg-orange-50/80 px-2 py-0.5 rounded-full uppercase tracking-wide backdrop-blur-sm">Featured</span>
-                        <i class="fa-solid fa-chevron-right text-slate-400 text-[10px]"></i>
-                    </div>
-                    <h3 class="font-bold text-slate-800 leading-tight text-sm">Barcamp Cambodia</h3>
-                    <p class="text-xs text-slate-500 mt-1 line-clamp-1">Connecting 3,000+ tech enthusiasts.</p>
-                </div>
-            </a>
-
-            <!-- Media List (Transparent) -->
-            <div class="glass-ios flex flex-col divide-y divide-slate-200/50">
-                <div class="px-5 py-3 bg-white/20 backdrop-blur-md">
-                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Media Mentions</h3>
+        <!-- 3. PROJECTS & EVENTS -->
+        <section id="projects">
+            <h2 class="section-title">Projects & Initiatives</h2>
+            <div class="grid gap-4">
+                
+                <!-- Barcamp -->
+                <div class="glass-card p-5 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-orange-500 group-hover:scale-110 transition-transform"><i class="fa-solid fa-microphone"></i></div>
+                    <span class="text-[10px] font-bold bg-orange-100 text-orange-600 px-2 py-1 rounded-md">Flagship</span>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-2 mb-1">Barcamp Cambodia</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-3">
+                        Organizing open-tech conferences that gather 3,000+ participants to share knowledge on startups and innovation.
+                    </p>
+                    <a href="https://www.techinasia.com/barcamp-phnom-penh-unconference-sees-3000-cambodians-talk-tech" target="_blank" class="text-xs font-bold text-ios-blue flex items-center gap-1">Read more <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- RFI Khmer (New) -->
-                <a href="https://www.youtube.com/watch?v=tTnIIzOIrJU&t=396s" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-solid fa-radio text-xs"></i>
+                <!-- ICT Camp -->
+                <div class="glass-card p-5 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-blue-500 group-hover:scale-110 transition-transform"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="text-[10px] font-bold bg-blue-100 text-blue-600 px-2 py-1 rounded-md">Education</span>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-2 mb-1">Cambodia ICT Camp</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-3">
+                        Leading sessions on Digital Hygiene and Data Protection to equip civil society with cybersecurity skills.
+                    </p>
+                    <a href="https://cambodiaict.net/en/facilitators/chy-sophart/" target="_blank" class="text-xs font-bold text-ios-blue flex items-center gap-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Technovation -->
+                <div class="glass-card p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-users-gear"></i></div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-800">Technovation & Startup Weekend</h4>
+                        <p class="text-xs text-slate-500">Mentoring young entrepreneurs and women in tech.</p>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-xs font-bold text-slate-800">RFI Khmer</h4>
-                        <p class="text-[10px] text-slate-500 truncate">មានទីតាំងមិនប្រក្រតីជាង៥០០កន្លែងដៅលើផែនទី Google</p>
-                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DIGITAL CONTENT (YouTube/Socials) -->
+        <section id="content">
+            <h2 class="section-title">Digital Content</h2>
+            <div class="glass-card p-2 grid grid-cols-2 gap-2">
+                <!-- YouTube -->
+                <a href="https://youtube.com/sophatchy" target="_blank" class="bg-white/50 rounded-[20px] p-4 flex flex-col items-center text-center hover:bg-white transition-colors">
+                    <i class="fa-brands fa-youtube text-3xl text-red-500 mb-2"></i>
+                    <h4 class="text-xs font-bold">YouTube</h4>
+                    <p class="text-[10px] text-slate-500">Tech reviews & Travel vlogs</p>
+                </a>
+                
+                <!-- Facebook -->
+                <a href="https://fb.com/SophatCHY" target="_blank" class="bg-white/50 rounded-[20px] p-4 flex flex-col items-center text-center hover:bg-white transition-colors">
+                    <i class="fa-brands fa-facebook text-3xl text-blue-600 mb-2"></i>
+                    <h4 class="text-xs font-bold">Facebook</h4>
+                    <p class="text-[10px] text-slate-500">Digital Literacy Campaigns</p>
                 </a>
 
-                <!-- Phnom Penh Post (New) -->
-                <a href="https://www.youtube.com/watch?v=TCYGbp3I2a0" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-solid fa-newspaper text-xs"></i>
+                <!-- Google Maps -->
+                <a href="https://www.localguidesconnect.com/t/hi-everyone-i-m-sophat-chy-a-remote-content-creator-with-a-passion-for-exploration/481552" target="_blank" class="bg-white/50 rounded-[20px] p-4 flex flex-col items-center text-center hover:bg-white transition-colors col-span-2 flex-row gap-4 justify-start px-6">
+                    <i class="fa-solid fa-map-location-dot text-3xl text-green-500"></i>
+                    <div class="text-left">
+                        <h4 class="text-xs font-bold">Google Local Guides</h4>
+                        <p class="text-[10px] text-slate-500">Mapping Cambodia & 360 Street View</p>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-xs font-bold text-slate-800">Phnom Penh Post</h4>
-                        <p class="text-[10px] text-slate-500 truncate">ហានិភ័យដែលអាចកើតឡើងតាមរយៈការស្វែងរកទីតាំងលើរូបថត</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. MEDIA & PRESS -->
+        <section id="media">
+            <h2 class="section-title">In The Media</h2>
+            <div class="glass-card flex flex-col divide-y divide-slate-200/50">
+                <!-- Kiripost -->
+                <a href="https://kiripost.com/stories/expert-urges-caution-when-shopping-online" target="_blank" class="p-4 hover:bg-white/40 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-xs font-bold text-slate-800">Kiripost</h4>
+                        <span class="text-[10px] text-slate-400">2022</span>
                     </div>
+                    <p class="text-[11px] text-slate-600 mt-1">"Expert Urges Caution when Shopping Online"</p>
                 </a>
 
                 <!-- Cambodianess -->
-                <a href="https://cambodianess.com/article/manipulated-google-maps-entries-raise-sovereignty-fears-in-cambodia" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-solid fa-map-location-dot text-xs"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
+                <a href="https://cambodianess.com/article/experts-warn-of-danger-of-broad-use-of-artificial-intelligence-in-government-or-education" target="_blank" class="p-4 hover:bg-white/40 transition-colors">
+                    <div class="flex justify-between items-start">
                         <h4 class="text-xs font-bold text-slate-800">Cambodianess</h4>
-                        <p class="text-[10px] text-slate-500 truncate">Manipulated Google Maps & Sovereignty</p>
+                        <span class="text-[10px] text-slate-400">2023</span>
                     </div>
+                    <p class="text-[11px] text-slate-600 mt-1">Warning on risks of AI in education & government.</p>
                 </a>
 
-                <!-- CamboJA News -->
-                <a href="https://cambojanews.com/cambodia-sites-targeted-in-google-maps-edits-digital-expert-report-says/" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-regular fa-newspaper text-xs"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
+                <!-- CamboJA -->
+                <a href="https://cambojanews.com/cambodians-digital-security-a-growing-concern-experts-say/" target="_blank" class="p-4 hover:bg-white/40 transition-colors">
+                    <div class="flex justify-between items-start">
                         <h4 class="text-xs font-bold text-slate-800">CamboJA News</h4>
-                        <p class="text-[10px] text-slate-500 truncate">Digital Expert Report on Map Edits</p>
+                        <span class="text-[10px] text-slate-400">2022</span>
                     </div>
+                    <p class="text-[11px] text-slate-600 mt-1">Insights on Digital Security concerns in Cambodia.</p>
                 </a>
-
-                <!-- Kiripost (Maps) -->
-                <a href="https://www.mosesngeth.com/posts/cambodias-digital-sovereignty-under-attack-as-thai-accounts-exploit-google-maps" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-solid fa-shield-halved text-xs"></i>
+                
+                <!-- RFI -->
+                <a href="https://www.youtube.com/watch?v=tTnIIzOIrJU&t=396s" target="_blank" class="p-4 hover:bg-white/40 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-xs font-bold text-slate-800">RFI Khmer</h4>
+                        <span class="text-[10px] text-slate-400">Video</span>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-xs font-bold text-slate-800">Kiripost</h4>
-                        <p class="text-[10px] text-slate-500 truncate">Digital Sovereignty Under Attack</p>
-                    </div>
-                </a>
-
-                <!-- Kiripost (Facebook) -->
-                <a href="https://www.mosesngeth.com/posts/experts-caution-facebook-users-to-secure-accounts-amid-rising-disabling-cases" target="_blank" class="p-4 flex items-center gap-4 hover:bg-white/40 transition-colors">
-                    <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 shadow-sm">
-                        <i class="fa-brands fa-facebook-f text-xs"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-xs font-bold text-slate-800">Kiripost</h4>
-                        <p class="text-[10px] text-slate-500 truncate">Facebook Account Security Advice</p>
-                    </div>
+                    <p class="text-[11px] text-slate-600 mt-1">Interview on Google Maps irregularities.</p>
                 </a>
             </div>
         </section>
 
-        <!-- 4. Support Buttons -->
-        <section class="animate-scale-in" style="animation-delay: 0.4s;">
-            <div class="flex items-center justify-between mb-3 px-1">
-                <h3 class="text-xs font-bold text-slate-800/60 uppercase tracking-wide">Support</h3>
-                <i class="fa-solid fa-lock text-[10px] text-slate-400"></i>
-            </div>
+        <!-- 6. CONTACT -->
+        <section id="contact">
+            <h2 class="section-title">Connect</h2>
+            <div class="glass-card p-6 text-center">
+                <p class="text-sm text-slate-600 mb-6">
+                    Interested in having me speak at your event or provide digital literacy training?
+                </p>
+                
+                <a href="mailto:sophatchy@gmail.com" class="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg hover:scale-105 transition-transform mb-8">
+                    <i class="fa-solid fa-envelope"></i> sophatchy@gmail.com
+                </a>
 
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="selectItem('coffee')" class="glass-ios p-4 flex flex-col items-center justify-center gap-2 hover:bg-amber-50/50 border border-white/40 hover:border-amber-200/50 transition-all group">
-                    <span class="text-3xl group-hover:scale-110 transition-transform filter drop-shadow-sm">☕</span>
-                    <div class="text-center">
-                        <span class="block text-xs font-bold text-slate-800">Buy Coffee</span>
-                        <span class="block text-[10px] text-slate-500 font-mono">$1.50</span>
-                    </div>
-                </button>
-
-                <button onclick="selectItem('meal')" class="glass-ios p-4 flex flex-col items-center justify-center gap-2 hover:bg-orange-50/50 border border-white/40 hover:border-orange-200/50 transition-all group">
-                    <span class="text-3xl group-hover:scale-110 transition-transform filter drop-shadow-sm">🍕</span>
-                    <div class="text-center">
-                        <span class="block text-xs font-bold text-slate-800">Buy Meal</span>
-                        <span class="block text-[10px] text-slate-500 font-mono">$8.00</span>
-                    </div>
-                </button>
+                <div class="flex justify-center gap-6 text-2xl text-slate-400">
+                    <a href="https://fb.com/SophatCHY" class="hover:text-blue-600 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://t.me/SophatCHY" class="hover:text-sky-500 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://www.linkedin.com/in/sophatchy/" class="hover:text-blue-700 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://x.com/SophatChy" class="hover:text-black transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
             </div>
         </section>
 
-        <footer class="text-center mt-8">
-            <p class="text-[10px] text-slate-400 font-medium tracking-wide opacity-70">DESIGNED IN PHNOM PENH</p>
+        <!-- Footer -->
+        <footer class="text-center mt-4">
+            <p class="text-[10px] text-slate-400 font-medium opacity-70">© 2026 Sophat CHY. All rights reserved.</p>
         </footer>
 
     </main>
 
-    <!-- Glass Payment Sheet -->
+    <!-- Sticky Bottom Navigation (Dock) -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="dock px-4 py-3 flex items-center gap-6">
+            <button onclick="scrollToSection('home')" class="text-slate-500 hover:text-ios-blue transition-colors text-xl"><i class="fa-solid fa-house"></i></button>
+            <button onclick="scrollToSection('about')" class="text-slate-500 hover:text-ios-blue transition-colors text-xl"><i class="fa-solid fa-user"></i></button>
+            <button onclick="scrollToSection('projects')" class="text-slate-500 hover:text-ios-blue transition-colors text-xl"><i class="fa-solid fa-briefcase"></i></button>
+            <button onclick="scrollToSection('media')" class="text-slate-500 hover:text-ios-blue transition-colors text-xl"><i class="fa-solid fa-newspaper"></i></button>
+            
+            <div class="w-[1px] h-6 bg-slate-300"></div>
+            
+            <button onclick="openPayment()" class="w-10 h-10 bg-gradient-to-br from-ios-blue to-ios-indigo rounded-full text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                <i class="fa-solid fa-mug-hot text-sm"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Payment Sheet Overlay -->
     <div id="payment-overlay" class="fixed inset-0 bg-black/10 backdrop-blur-[4px] z-[60] hidden opacity-0 transition-opacity duration-300" onclick="closePayment()"></div>
 
+    <!-- Payment Sheet -->
     <div id="payment-sheet" class="fixed bottom-4 left-4 right-4 z-[70] translate-y-[120%] transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1)">
-        <div class="glass-ios p-6 relative bg-white/80 backdrop-blur-2xl shadow-2xl border-white/60">
-            
-            <!-- Handle -->
+        <div class="glass-card p-6 bg-white/90">
             <div class="w-10 h-1 bg-slate-300/80 rounded-full mx-auto mb-6"></div>
-
             <div class="text-center">
-                <div class="w-16 h-16 bg-gradient-to-tr from-aba to-abaCyan rounded-2xl flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg shadow-aba/20 text-white">
-                    <span id="sheet-icon">☕</span>
-                </div>
-                
-                <h2 class="text-xl font-bold text-slate-800">Send <span id="sheet-price">$1.50</span></h2>
-                <p class="text-xs text-slate-500 mb-6">via ABA KHQR</p>
-
-                <div class="bg-white/50 p-4 rounded-[24px] mb-6 border border-white shadow-inner">
+                <h2 class="text-xl font-bold text-slate-800">Support My Work</h2>
+                <p class="text-xs text-slate-500 mb-6">Buy me a coffee via ABA KHQR</p>
+                <div class="bg-white p-4 rounded-[24px] mb-6 border border-slate-100 shadow-inner">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://pay.ababank.com/oRF8/1kbk3d46&color=003D5B" class="w-40 h-40 mx-auto rounded-xl opacity-90 mix-blend-multiply">
                 </div>
-
-                <div class="flex flex-col gap-3">
-                    <a href="https://pay.ababank.com/oRF8/1kbk3d46" class="w-full py-3.5 bg-aba text-white font-bold rounded-2xl shadow-lg shadow-aba/20 active:scale-95 transition-transform flex items-center justify-center gap-2 text-sm">
-                        Open ABA App
-                    </a>
-                    <button onclick="copyToClipboard('000111343')" class="w-full py-3.5 bg-white/50 border border-white text-slate-600 font-bold rounded-2xl active:scale-95 transition-transform text-sm hover:bg-white">
-                        Copy: 000 111 343
-                    </button>
-                </div>
+                <button onclick="copyToClipboard('000111343')" class="w-full py-3.5 bg-ios-blue text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-transform text-sm">
+                    Copy ABA: 000 111 343
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        const items = {
-            coffee: { name: 'Hot Coffee', price: '$1.50', icon: '☕' },
-            meal: { name: 'Nice Meal', price: '$8.00', icon: '🍕' }
-        };
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
 
-        function selectItem(key) {
-            document.getElementById('sheet-icon').innerText = items[key].icon;
-            document.getElementById('sheet-price').innerText = items[key].price;
-            
+        function openPayment() {
             const overlay = document.getElementById('payment-overlay');
             const sheet = document.getElementById('payment-sheet');
-            
             overlay.classList.remove('hidden');
             setTimeout(() => {
                 overlay.classList.remove('opacity-0');
@@ -460,10 +394,8 @@
         function closePayment() {
             const overlay = document.getElementById('payment-overlay');
             const sheet = document.getElementById('payment-sheet');
-            
             overlay.classList.add('opacity-0');
             sheet.classList.add('translate-y-[120%]');
-            
             setTimeout(() => {
                 overlay.classList.add('hidden');
             }, 300);
@@ -474,29 +406,8 @@
                 const btn = event.currentTarget;
                 const originalText = btn.innerText;
                 btn.innerText = "Copied!";
-                btn.classList.add('bg-green-500', 'text-white', 'border-transparent');
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove('bg-green-500', 'text-white', 'border-transparent');
-                }, 1500);
-            }).catch(err => {
-                console.error("Failed to copy:", err);
+                setTimeout(() => btn.innerText = originalText, 1500);
             });
-        }
-
-        function sharePage() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Sophat CHY',
-                    url: window.location.href,
-                }).catch(err => {
-                    console.log('Share canceled or failed:', err);
-                });
-            } else {
-                navigator.clipboard.writeText(window.location.href)
-                .then(() => alert('Link copied to clipboard!'))
-                .catch(err => console.error('Failed to copy link:', err));
-            }
         }
     </script>
 </body>
