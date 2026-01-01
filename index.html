@@ -38,17 +38,10 @@
                         khqr: '#E1232E',
                     },
                     animation: {
-                        'blob': 'blob 7s infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
                     },
                     keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
@@ -70,17 +63,20 @@
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+        /* Professional Dot Pattern Background */
+        .bg-dot-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
         /* Glassmorphism Utilities */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        .dark .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
-            border-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
         /* Hover Effects */
@@ -89,7 +85,8 @@
         }
         .hover-lift:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border-color: rgba(37, 99, 235, 0.2);
         }
 
         /* Treat Card Active State */
@@ -134,13 +131,12 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen relative overflow-x-hidden selection:bg-brand-light selection:text-white transition-colors duration-500">
+<body class="bg-dot-pattern text-slate-800 font-sans min-h-screen relative overflow-x-hidden selection:bg-brand-light selection:text-white transition-colors duration-500">
 
-    <!-- Background Decoration -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+    <!-- Subtle Gradient Overlay -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white/80"></div>
+        <div class="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-blue-50/80 to-transparent"></div>
     </div>
 
     <!-- Floating Emoji Container -->
@@ -156,19 +152,34 @@
 
         <!-- Profile Header -->
         <header class="text-center w-full mb-8 animate-fade-in">
-            <!-- No Icon/Profile Picture as requested -->
             
-            <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand mb-2 font-khmer tracking-tight pb-2">Sophat CHY</h1>
+            <!-- Profile Image Container -->
+            <div class="relative w-40 h-40 mx-auto mb-6 group cursor-pointer">
+                <!-- Glowing Ring -->
+                <div class="absolute -inset-1 bg-gradient-to-tr from-brand to-purple-500 rounded-full opacity-75 blur group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+                
+                <!-- Actual Image -->
+                <div class="relative w-full h-full rounded-full border-4 border-white shadow-xl overflow-hidden bg-slate-100">
+                    <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/468360037_1074603117456411_7269761210649519852_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=0CWLHNDyFUQQ7kNvwHQA4sB&_nc_oc=AdkfBikiYSStK8BHaRmYV-BkBwgU0pwtNURcu8HwI2gLFD5Eo72w5P9172LjmQYdLic&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=NuJT3UMUywph89n_N4ganA&oh=00_Afq7btHKp_e5-sqw2l9Vi-y8MJoAKZyKdHPNbofI2InxXQ&oe=695C1779" 
+                         class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" 
+                         alt="Sophat CHY">
+                </div>
+                
+                <!-- Status Dot -->
+                <div class="absolute bottom-2 right-2 w-7 h-7 bg-green-500 rounded-full border-4 border-white shadow-sm" title="Available for work"></div>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand mb-2 font-khmer tracking-tight pb-2 drop-shadow-sm">Sophat CHY</h1>
             <p class="text-slate-500 text-xl md:text-2xl mb-6 font-khmer font-bold tracking-wide">ជី សុផាត</p>
             
             <!-- Tags/Badges -->
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold border border-blue-200 uppercase tracking-wide">Content Creator</span>
-                <span class="px-4 py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs font-bold border border-purple-200 uppercase tracking-wide">Tech Trainer</span>
-                <span class="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold border border-orange-200 uppercase tracking-wide">Community Leader</span>
+                <span class="px-4 py-1.5 bg-white/80 text-blue-700 rounded-full text-xs font-bold border border-blue-100 shadow-sm uppercase tracking-wide">Content Creator</span>
+                <span class="px-4 py-1.5 bg-white/80 text-purple-700 rounded-full text-xs font-bold border border-purple-100 shadow-sm uppercase tracking-wide">Tech Trainer</span>
+                <span class="px-4 py-1.5 bg-white/80 text-orange-700 rounded-full text-xs font-bold border border-orange-100 shadow-sm uppercase tracking-wide">Community Leader</span>
             </div>
 
-            <!-- Extended About Me Section -->
+            <!-- About Me Section -->
             <div class="glass-panel p-6 rounded-2xl text-left shadow-sm border-l-4 border-l-brand relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-brand">
                     <i class="fa-solid fa-quote-right"></i>
@@ -177,10 +188,10 @@
                     <i class="fa-solid fa-user-circle text-brand"></i> About Me
                 </h3>
                 <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4">
-                    I am a <strong>Digital Content Creator</strong> and advocate for internet safety originally from <strong>Banteay Meanchey</strong>. With over a decade of experience in Cambodia's digital space, I am dedicated to empowering individuals through digital literacy and creative storytelling.
+                    I am a <strong>Digital Content Creator</strong> and <strong>Tech Community Leader</strong> with over a decade of experience shaping Cambodia's digital landscape. My passion lies in bridging the digital divide—empowering individuals with the skills to navigate the internet safely and creatively.
                 </p>
                 <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-                    My mission is to promote <strong>Digital Safety Awareness</strong> by creating educational content that helps the community stay safe online. Beyond technology, I am passionate about exploring Cambodia's landscapes 📸 and sharing my travel journeys to inspire others.
+                    As a dedicated advocate for <strong>Digital Literacy</strong>, I produce educational content that simplifies complex tech topics for the general public. Whether organizing major tech conferences or sharing travel stories 📸, my goal remains the same: to inspire, educate, and connect the community.
                 </p>
             </div>
         </header>
@@ -190,7 +201,7 @@
             
             <!-- YouTube -->
             <a href="https://youtube.com/sophatchy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xl group-hover:bg-red-600 group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center text-xl group-hover:bg-red-600 group-hover:text-white transition-colors border border-red-100">
                     <i class="fa-brands fa-youtube"></i>
                 </div>
                 <div class="flex-grow">
@@ -202,7 +213,7 @@
 
             <!-- Facebook -->
             <a href="https://fb.com/SophatCHY" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors border border-blue-100">
                     <i class="fa-brands fa-facebook-f"></i>
                 </div>
                 <div class="flex-grow">
@@ -214,7 +225,7 @@
 
             <!-- Telegram -->
             <a href="https://t.me/SophatCHY" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-500 flex items-center justify-center text-xl group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-500 flex items-center justify-center text-xl group-hover:bg-sky-500 group-hover:text-white transition-colors border border-sky-100">
                     <i class="fa-brands fa-telegram"></i>
                 </div>
                 <div class="flex-grow">
@@ -226,7 +237,7 @@
 
             <!-- Instagram -->
             <a href="https://www.instagram.com/sophatchy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-xl group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center text-xl group-hover:bg-pink-600 group-hover:text-white transition-colors border border-pink-100">
                     <i class="fa-brands fa-instagram"></i>
                 </div>
                 <div class="flex-grow">
@@ -238,7 +249,7 @@
 
              <!-- Twitter / X -->
              <a href="https://x.com/SophatChy" target="_blank" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group">
-                <div class="w-10 h-10 rounded-lg bg-slate-200 text-slate-800 flex items-center justify-center text-xl group-hover:bg-black group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-xl group-hover:bg-black group-hover:text-white transition-colors border border-slate-200">
                     <i class="fa-brands fa-x-twitter"></i>
                 </div>
                 <div class="flex-grow">
@@ -250,7 +261,7 @@
             
             <!-- Email -->
              <a href="mailto:sophatchy@gmail.com" class="glass-panel p-3 rounded-xl flex items-center gap-3 hover-lift group border-l-4 border-l-brand">
-                <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors border border-emerald-100">
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div class="flex-grow">
@@ -269,8 +280,8 @@
             
             <div class="space-y-3">
                 <!-- Barcamp -->
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-brand/30 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0">
+                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0 border border-orange-200">
                         <i class="fa-solid fa-microphone-lines"></i>
                     </div>
                     <div class="flex-grow">
@@ -280,8 +291,8 @@
                 </div>
 
                 <!-- Digital Literacy -->
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-brand/30 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">
+                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0 border border-blue-200">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div class="flex-grow">
@@ -291,8 +302,8 @@
                 </div>
 
                 <!-- Consulting -->
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-brand/30 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0">
+                <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 items-start md:items-center hover-lift transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0 border border-purple-200">
                         <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
                     <div class="flex-grow">
@@ -303,45 +314,74 @@
             </div>
         </section>
 
-        <!-- Media & Press Section -->
+        <!-- Media & Mentions Section (Updated) -->
         <section class="w-full mb-12 animate-fade-in animate-delay-200">
             <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <span class="w-8 h-px bg-slate-300"></span> Media & Mentions <span class="w-full h-px bg-slate-300"></span>
             </h2>
             
             <div class="grid grid-cols-1 gap-3">
-                <a href="#" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
+                
+                <!-- Cambodia ICT Camp (Bio) -->
+                <a href="https://cambodiaict.net/en/facilitators/chy-sophart/" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
                     <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-slate-800"><i class="fa-regular fa-newspaper"></i></div>
+                        <div class="text-2xl text-slate-400 group-hover:text-blue-600 w-8 text-center"><i class="fa-solid fa-user-tag"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Cambodia ICT Camp</h4>
+                            <p class="text-xs text-slate-500">Official Facilitator Profile: Digital Security & Content Creation.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                </a>
+
+                <!-- CamboJA News -->
+                <a href="https://cambojanews.com/cambodians-digital-security-a-growing-concern-experts-say/" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="text-2xl text-slate-400 group-hover:text-slate-800 w-8 text-center"><i class="fa-regular fa-newspaper"></i></div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800">CamboJA News</h4>
                             <p class="text-xs text-slate-500">Interview on Digital Security concerns in Cambodia.</p>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
                 </a>
 
-                <a href="#" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
+                <!-- The Thomith Show -->
+                <a href="https://www.iden.media/thethomithshowseason4" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
                     <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-red-500"><i class="fa-solid fa-podcast"></i></div>
+                        <div class="text-2xl text-slate-400 group-hover:text-red-500 w-8 text-center"><i class="fa-solid fa-podcast"></i></div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800">The Thomith Show</h4>
                             <p class="text-xs text-slate-500">Guest speaker on content creation & entrepreneurship.</p>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
                 </a>
 
-                <a href="#" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
+                <!-- TechInAsia -->
+                <a href="https://www.techinasia.com/barcamp-phnom-penh-unconference-sees-3000-cambodians-talk-tech" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
                     <div class="flex items-center gap-3">
-                        <div class="text-2xl text-slate-400 group-hover:text-blue-500"><i class="fa-solid fa-globe"></i></div>
+                        <div class="text-2xl text-slate-400 group-hover:text-orange-500 w-8 text-center"><i class="fa-solid fa-bullhorn"></i></div>
                         <div>
-                            <h4 class="font-bold text-sm text-slate-800">Kiripost</h4>
-                            <p class="text-xs text-slate-500">Expert advice on safe online shopping.</p>
+                            <h4 class="font-bold text-sm text-slate-800">TechInAsia</h4>
+                            <p class="text-xs text-slate-500">Barcamp Phnom Penh sees 3,000+ attendees.</p>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
                 </a>
+
+                <!-- Google Local Guides -->
+                <a href="https://www.localguidesconnect.com/t/hi-everyone-i-m-sophat-chy-a-remote-content-creator-with-a-passion-for-exploration/m-p/481552" target="_blank" class="glass-panel p-4 rounded-xl flex items-center justify-between group hover:bg-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="text-2xl text-slate-400 group-hover:text-green-500 w-8 text-center"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Google Local Guides</h4>
+                            <p class="text-xs text-slate-500">Feature on mapping Cambodia & exploration.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300 group-hover:text-slate-500"></i>
+                </a>
+
             </div>
         </section>
 
