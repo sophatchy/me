@@ -23,7 +23,7 @@ const SocialLink = ({ name, url, icon, color, description }) => (
     </div>
 
     {/* Text Content */}
-    <div className="ml-4 flex-grow">
+    <div className="ml-4 flex-grow z-10">
       <h3 className="font-bold text-gray-100 group-hover:text-white transition-colors">{name}</h3>
       <p className="text-xs text-gray-400 group-hover:text-gray-300">{description}</p>
     </div>
@@ -37,12 +37,16 @@ const SocialLink = ({ name, url, icon, color, description }) => (
 
 export default function App() {
   const [copied, setCopied] = useState(false);
-  const [showShareTooltip, setShowShareTooltip] = useState(false);
+  
+  // Simple mount animation state
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleShare = async () => {
     const url = window.location.href;
     
-    // Try native share first (works great on mobile)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -56,9 +60,7 @@ export default function App() {
       }
     }
 
-    // Fallback to clipboard copy
     try {
-      // Create temporary element to handle copy in iframe environments
       const textArea = document.createElement("textarea");
       textArea.value = url;
       document.body.appendChild(textArea);
@@ -135,15 +137,15 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-purple-500/30">
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-purple-600/20 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-blue-600/20 rounded-full blur-3xl opacity-50" />
         <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 w-[800px] h-[800px] bg-indigo-900/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-2xl mx-auto px-4 py-12 flex flex-col items-center min-h-screen">
+      <div className={`relative max-w-2xl mx-auto px-4 py-12 flex flex-col items-center min-h-screen transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         
         {/* Header Section */}
-        <div className="flex flex-col items-center mb-10 w-full animate-fade-in-down">
+        <div className="flex flex-col items-center mb-10 w-full transform transition-all duration-700 translate-y-0">
           {/* Profile Image / Initials */}
           <div className="relative group mb-6">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-75 group-hover:opacity-100 transition duration-300 blur-sm"></div>
@@ -185,7 +187,7 @@ export default function App() {
         </div>
 
         {/* Links Grid */}
-        <div className="w-full max-w-md space-y-4 animate-fade-in-up">
+        <div className="w-full max-w-md space-y-4">
           {socialLinks.map((link, index) => (
             <SocialLink key={index} {...link} />
           ))}
@@ -196,24 +198,6 @@ export default function App() {
           <p>© {new Date().getFullYear()} Sophat CHY. All rights reserved.</p>
         </footer>
       </div>
-
-      <style>{`
-        @keyframes fade-in-down {
-          0% { opacity: 0; transform: translateY(-20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-in-up {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-down {
-          animation: fade-in-down 0.8s ease-out forwards;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards 0.2s;
-          opacity: 0;
-        }
-      `}</style>
     </div>
   );
 }
