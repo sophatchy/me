@@ -529,11 +529,14 @@
                 
                 <!-- QR Code Container -->
                 <div class="bg-white p-4 rounded-[24px] mb-5 border border-slate-100 shadow-inner inline-block">
-                    <!-- User's Original QR Code Image -->
-                    <img src="./IMG_2375.JPG" 
-                         onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://pay.ababank.com/oRF8/1kbk3d46&color=000000&bgcolor=ffffff&margin=10';"
-                         alt="Scan to Pay"
-                         class="w-48 h-48 mx-auto rounded-lg object-contain">
+                    <!-- Cropping Container -->
+                    <div class="w-48 h-48 mx-auto rounded-lg overflow-hidden relative">
+                        <!-- Updated Image with Scale to Crop -->
+                        <img src="https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/473383935_1107149590868430_3720384056585639490_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=U8wd_0lr_i8Q7kNvwGaUAu7&_nc_oc=AdnCEY1vs5y3sp6pLuROwAOHubqCyILSb5nEfjYH_Zv4VYs4Ph-0CUOfcSVj4CMobgU&_nc_zt=23&_nc_ht=scontent.fpnh24-1.fna&_nc_gid=EqFXuGkvU4NsPUlTxNZLow&oh=00_Afo0QR6im5DjiGxRVaI3vHK613JqS1sPcaBxNdwaFhOoGg&oe=695D2C59" 
+                             onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://pay.ababank.com/oRF8/1kbk3d46&color=000000&bgcolor=ffffff&margin=10';"
+                             alt="ABA KHQR"
+                             class="w-full h-full object-cover object-center transform scale-[1.4]">
+                    </div>
                 </div>
 
                 <div class="flex flex-col gap-3">
